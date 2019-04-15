@@ -12,6 +12,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.droidmentor.mlkitbarcodescan.BarCodeScannerUtil.BarcodeScanningProcessor;
@@ -50,6 +54,10 @@ public class BarcodeScannerActivity extends AppCompatActivity {
     CameraSourcePreview preview;
     @BindView(R.id.overlayView)
     OverlayView overlayView;
+    @BindView(R.id.barcodeScanLine)
+    LinearLayout barcodeScaneLine;
+    @BindView(R.id.viewFinder)
+    ImageView viewFinder;
 
     BarcodeScanningProcessor barcodeScanningProcessor;
 
@@ -77,6 +85,10 @@ public class BarcodeScannerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_barcode_scanner);
 
         ButterKnife.bind(this);
+
+        Animation blink = AnimationUtils.loadAnimation(this,R.anim.blink);
+        barcodeScaneLine.setAnimation(blink);
+        viewFinder.setAnimation(blink);
 
         dbHandler = new DBHandler(this);
 
