@@ -105,7 +105,8 @@ public class BarcodeScannerActivity extends AppCompatActivity {
         FirebaseVisionBarcodeDetectorOptions options =
                 new FirebaseVisionBarcodeDetectorOptions.Builder()
                         .setBarcodeFormats(
-                                FirebaseVisionBarcode.FORMAT_QR_CODE)
+                                FirebaseVisionBarcode.FORMAT_EAN_8,
+                                FirebaseVisionBarcode.FORMAT_EAN_13)
                         .build();
 
         FirebaseVisionBarcodeDetector detector = FirebaseVision.getInstance()
